@@ -1,0 +1,61 @@
+<div class=" container col-xxl-8 px-4 py-5 ">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10 col-xl-8 text-center">
+      <div>
+        <i class="bi bi-people-fill" style="font-size: 2rem;"></i>
+        <h3 style="font-family:Journey; font-size: 70px;">Customers reviews</h3>
+      </div>
+      <p class="lead mb-4 pb-2 mb-md-5 pb-md-0">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
+        numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum
+        quisquam eum porro a pariatur veniam.
+      </p>
+      <button routerLink="/add-review" routerLinkActive="active"
+        class="lead btn btn-outline-success btn-rounded waves-effect w-50 m-2"><i class="bi bi-person-plus"> add
+          reviews</i></button>
+    </div>
+  </div>
+
+  <div class="row  d-flex align-items-stretch">
+    <div class="col-md-4 mb-5 mb-md-0 d-flex align-items-stretch " *ngFor="let review of reviews">
+      <div class="card testimonial-card w-100 mb-4">
+        <div class="card-up" style="background-color: #212020;"></div>
+        <div class="avatar mx-auto bg-white">
+          <div [ngSwitch]="review.ProfileSrc">
+            <img *ngSwitchCase="'Male'" src="../../../assets/images/Male.jpg"
+              class="rounded-circle img-fluid w-100 h-100" />
+            <img *ngSwitchCase="'Female'" src="../../../assets/images/Female.jpg"
+              class="rounded-circle img-fluid w-100 h-100" />
+            <img *ngSwitchCase="'Anonimy'" src="../../../assets/images/anonimy.jpg"
+              class="rounded-circle img-fluid w-100 h-100" />
+          </div>
+        </div>
+        <div class="card-body">
+          <h4 class="mb-4 text-center">{{review.UserName}}</h4>
+          <hr/>
+          <div class="bg-light  rounded p-2"><p type="button"
+            class="btn btn-outline-secondary text-center"
+            ngbPopover="{{ review.ReviewContent}}"
+            triggers="mouseenter:mouseleave"
+            class="dark-grey-text mt-4"class="dark-grey-text mt-4 text-center">{{review.ReviewContent | threeDots}}</p></div>
+          <p class="dark-grey-text mt-4"><i class="bi bi-envelope-at" style="font-size: 1rem;"></i>  {{review.Email}}</p>
+          <p class="dark-grey-text mt-4"><i class="bi bi-telephone" style="font-size: 1rem;"></i>  {{review.PhoneNumber}}</p>
+          <p class="dark-grey-text mt-4"><i class="bi bi-calendar4-event" style="font-size: 1rem;"></i>  {{review.Date | date:'dd/MM/yyyy'}}</p>
+        </div>
+        <div class="text-center">
+          <button
+          (click)="increaseLike(review.Id)"
+          type="button"
+          class="btn btn-light position-relative"
+        >
+          Like ❤
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary"
+            >{{ review.Like }}
+            <span class="visually-hidden">unread messages</span></span
+          >
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>

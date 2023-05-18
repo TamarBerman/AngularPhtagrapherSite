@@ -1,0 +1,16 @@
+<div class="container px-4 py-5" id="hanging-icons">
+    <h3 class="pb-2" style="font-family:Journey; font-size: 70px;" >-My packages -</h3>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div *ngFor="let package of packages" class="col d-flex align-items-start">
+            <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg w-100"
+                style="background-image: url('../../../assets/images/{{package.ImageSrc}}');background-size: cover;background-position: center;">
+                <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                    <h3 [ngStyle]="{'text-shadow' :'2px 2px 2px black'}" class="display-6 pt-5 mt-5 mb-4 display-6 lh-1">{{package.Title}}</h3>
+                    <button type="button" class="lead btn btn-light w-75 opacity-75" data-target="#exampleModal"
+                        routerLink="more-details/{{package.Title}}">More Details <i
+                            class="bi bi-arrow-bar-right lead"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <router-outlet></router-outlet>

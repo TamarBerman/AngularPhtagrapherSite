@@ -1,0 +1,65 @@
+<div class="container px-4 py-5 w-50">
+    <div class="text-center justify-content-center">
+        <div>
+            <i class="bi bi-person-add" style="font-size: 2rem;"></i>
+            <h3 style="font-family:Journey; font-size: 70px;">Add a personreview</h3>
+        </div>
+    </div>
+
+    <form class="lead row g-3 needs-validation p-5" [formGroup]="reviewForm" novalidate (ngSubmit)="open(mymodal)"
+        (ngSubmit)="submitReviewForm()" role="form">
+        <!-- user name -->
+        <div class="col-md-4 w-50">
+            <label autoFocus class="form-label" for="UserName">User Name</label>
+            <input type="text" class="form-control" id="UserName" formControlName="UserName">
+        </div>
+
+        <!-- email -->
+        <div class="col-md-4 w-50">
+            <label for="Email" class="form-label">Email address</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="Email">@</span>
+                <input type="text" class="form-control" id="Email" formControlName="Email">
+            </div>
+        </div>
+        <!-- phone -->
+        <div class="col-md-4 w-50">
+            <label for="PhoneNumber" class="form-label">Phone number</label>
+            <input type="text" class="form-control" id="PhoneNumber" formControlName="PhoneNumber">
+        </div>
+        <!-- ProfileSrc -->
+        <div class="col-md-6 w-50">
+            <label for="ProfileSrc" class="form-label">Gender</label>
+            <select formControlName="ProfileSrc" class="form-select" aria-label="Default select example" id="ProfileSrc">
+                <option value="Male">Male </option>
+                <option value="Female">Female </option>
+                <option value="Anonimy">Anonimy </option>
+            </select>
+        </div>
+        <!-- message -->
+        <textarea class="form-control" id="ReviewContent" placeholder="write your review"
+            formControlName="ReviewContent"></textarea>
+        <div class="col-12">
+            <button class="btn btn-success" [disabled]="!reviewForm.valid" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+<!-- modal -->
+<ng-template #mymodal let-modal>
+    <div class="modal-header" showModal="false">
+        <h4 class="lead modal-title" id="modal-basic-title">😍 TNX 😍</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"
+>
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="lead modal-body">
+        <h2 class="lead"><strong>{{dataToSave?.UserName}},</strong></h2>
+        <p> Thanks for your feedback!</p>
+        <p> You can whatch your review in 'customer reviews' page..</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="navigateToReviews()" (click)="modal.close('Save click')"
+            >Ok</button>
+    </div>
+</ng-template>
