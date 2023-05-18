@@ -1,4 +1,4 @@
-# Photographer website - Angular funal project
+# Photographer website - Angular final project
 
 ## P.S
 Go to the ScreenSots folder to view the site
